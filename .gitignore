@@ -27,3 +27,4 @@ micro-api/tmp/storage/.keep
 
 # Ignore master key for decrypting credentials and more.
 micro-api/config/master.key
+.env
