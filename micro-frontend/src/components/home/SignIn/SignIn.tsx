@@ -51,7 +51,9 @@ const SignIn = (props: Props) => {
 							))}
 						</div>
 						<button type="submit" className={`${styles.signInButton} mb-2 py-1`}>Sign in</button>
-						<Link className={`d-block text-center`} to={'/sign-up'}>Need an account? Create on here</Link>
+						<div className={`d-flex justify-content-center`}>
+							<Link to={'/sign-up'}>Need an account? Create on here</Link>
+						</div>
 					</div>
 				</form>
 			)}
