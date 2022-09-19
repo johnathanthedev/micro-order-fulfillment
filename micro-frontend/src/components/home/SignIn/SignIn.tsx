@@ -10,7 +10,8 @@ type Props = {}
 const SignIn = (props: Props) => {
 	const [signInErrors, setSignInErrors] = useState<string[]>([])
 
-	const {signIn} = useAuth({});
+	const { signIn } = useAuth({});
+
 	return (
 		<Formik
 			initialValues={{email: '', password: ''}}
