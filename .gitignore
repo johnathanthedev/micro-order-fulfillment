@@ -27,4 +27,23 @@ micro-api/tmp/storage/.keep
 
 # Ignore master key for decrypting credentials and more.
 micro-api/config/master.key
+
+micro-frontend/package-lock.json
+micro-frontend/node_modules
+micro-frontend/.pnp
+micro-frontend/.pnp.js
+
+# testing
+micro-frontend/coverage
+
+# production
+micro-frontend/build
+
+# misc
+micro-frontend/.DS_Store
+
+micro-frontend/npm-debug.log*
+micro-frontend/yarn-debug.log*
+micro-frontend/yarn-error.log*
+
 .env
