@@ -27,4 +27,8 @@ micro-api/tmp/storage/.keep
 
 # Ignore master key for decrypting credentials and more.
 micro-api/config/master.key
+
+micro-frontend/node_modules
+micro-frontend/package-lock.json
+
 .env
