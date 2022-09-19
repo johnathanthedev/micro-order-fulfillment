@@ -18,7 +18,7 @@ const SignIn = (props: Props) => {
 					<input name="password" type="password" placeholder="Password"/>
 				</div>
 				<button className={`${styles.signInButton} mb-2`}>Sign in</button>
-				<Link className={`d-block text-center`} to={'/dashboard'}>Sign up</Link>
+				<Link className={`d-block text-center`} to={'/sign-up'}>Need an account? Create on here</Link>
 			</div>
 		</div>
 	)
