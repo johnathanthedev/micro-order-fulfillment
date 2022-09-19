@@ -1,0 +1,30 @@
+.signUpWrapper {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.signUpContainer {
+	margin-top: 10%;
+	width: 35%;
+	height: 400px;
+	background-color: white;
+	border-radius: 7.5px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0);
+	-webkit-box-shadow: 0px 5px 10px 0px rgba(48,48,48,0.5);
+	-moz-box-shadow: 0px 5px 10px 0px rgba(48,48,48,0.5);
+	box-shadow: 0px 5px 10px 0px rgba(48,48,48,0.5);
+}
+
+.signUpButtonGroup {
+	width: 70%;
+	height: 100%;
+	margin: 0 auto;
+}
+
+.signUpButton {
+	display: block;
+	margin: 0 auto;
+	width: 70%;
+}
