@@ -15,8 +15,24 @@ const useAuth = (props: Props) => {
 			return error
 		}
 	}
+
+	const signUp = async (signUpObj: any) => {
+		const signInUserObj = {
+			user: signUpObj
+		}
+
+		try {
+			const { data: signInResponse } = await authRequest.signUp(signInUserObj)
+			return signInResponse
+
+		} catch (error) {
+			return error
+		}
+	}
+
 	return {
-		signIn
+		signIn,
+		signUp
 	}
 }
 

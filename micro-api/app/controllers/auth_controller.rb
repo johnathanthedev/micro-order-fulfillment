@@ -1,13 +1,21 @@
 class AuthController < ApplicationController
 	def sign_up
-		user = User.create!(user_sign_up_params.merge(admin: false))
-		jwt_payload = { user_id: user.id, exp: (Time.now + 86400).to_i }
-		token = JWT.encode jwt_payload, ENV["MICRO_JWT_SECRET"], "HS256"
+		user = User.find_by email: user_log_in_params[:email]
 
-		render json: {
-			user: user,
-			token: token
-		}, status: :created
+		if user
+			render json: {
+				message: 'Email is taken'
+			}, status: :unprocessable_entity
+		else
+			user = User.create!(user_sign_up_params.merge(admin: false))
+			jwt_payload = { user_id: user.id, exp: (Time.now + 86400).to_i }
+			token = JWT.encode jwt_payload, ENV["MICRO_JWT_SECRET"], "HS256"
+
+			render json: {
+				user: user,
+				token: token
+			}, status: :created
+		end
 	end
 
 
