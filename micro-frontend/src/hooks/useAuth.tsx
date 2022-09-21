@@ -10,6 +10,7 @@ const useAuth = (props: Props) => {
 		
 		try {
 			const { data: signInResponse } = await authRequest.signIn(signInUserObj)
+			storeTokenInLocalStorage(signInResponse?.token, "token")
 			return signInResponse
 		} catch (error) {
 			return error
@@ -23,16 +24,26 @@ const useAuth = (props: Props) => {
 
 		try {
 			const { data: signInResponse } = await authRequest.signUp(signInUserObj)
+			storeTokenInLocalStorage(signInResponse?.token, "token")
 			return signInResponse
-
 		} catch (error) {
 			return error
 		}
 	}
 
+	const storeTokenInLocalStorage = (token: string, sid: string) => {
+		localStorage.setItem(sid, token)
+	}
+
+	const fetchUserInfo = async () => {
+		const { data: fetchedUserInfo } = await authRequest.fetchUserInfo()
+		return fetchedUserInfo
+	}
+
 	return {
 		signIn,
-		signUp
+		signUp,
+		fetchUserInfo
 	}
 }
 

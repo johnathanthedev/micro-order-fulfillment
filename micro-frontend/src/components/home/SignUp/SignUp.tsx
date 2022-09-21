@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import styles from './SignUp.module.css'
@@ -11,6 +11,7 @@ const SignUp = (props: Props) => {
 	const [signUpErrors, setSignUpErrors] = useState<string[]>([])
 
 	const { signUp } = useAuth({});
+  const navigate = useNavigate();
 
 	return (
 		<Formik
@@ -23,11 +24,11 @@ const SignUp = (props: Props) => {
           'Passwords must match'
         ),
 			})}
-			onSubmit={async (values, { setSubmitting}) => {
+			onSubmit={async (values, { setSubmitting }) => {
 				setSubmitting(false)
 				const signUpResults = await signUp(values)
 				const signUpUser = signUpResults?.reponse?.data?.user
-				!signUpUser && setSignUpErrors([signUpResults?.response?.data?.message])
+				signUpUser ? navigate('/dashboard') : setSignUpErrors([signUpResults?.response?.data?.message])
 			}}
 		>
 			{(formik) => (

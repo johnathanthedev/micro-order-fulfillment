@@ -1,4 +1,8 @@
-.background {
+.wrapper {
 	background-color: #F0F5FF;
 	height: 100vh;
+}
+
+.appContainer {
+	height: 100%;
 }

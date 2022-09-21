@@ -37,6 +37,23 @@ class AuthController < ApplicationController
 		end
 	end
 
+	def fetch_user_info
+		token = request.headers["Authorization"]
+		decoded_token = JWT.decode token, ENV["MICRO_JWT_SECRET"]
+		user_id = decoded_token[0]["user_id"]
+		user = User.find_by id: user_id
+
+		if !user
+			render json: {
+				message: "No user found"
+			}, status: :not_found
+		else
+			render json: {
+				user: user
+			}, status: :ok
+		end
+	end
+
 	private
 
 	def user_sign_up_params

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import styles from './SignIn.module.css'
@@ -11,6 +11,7 @@ const SignIn = (props: Props) => {
 	const [signInErrors, setSignInErrors] = useState<string[]>([])
 
 	const { signIn } = useAuth({});
+  const navigate = useNavigate();
 
 	return (
 		<Formik
@@ -19,11 +20,12 @@ const SignIn = (props: Props) => {
 				email: Yup.string().email('Invalid email address').required('Required'),
         password: Yup.string().min(8, 'Min. 8 characters').required('Required'),
 			})}
-			onSubmit={async (values, { setSubmitting}) => {
+			onSubmit={async (values, { setSubmitting }) => {
+				setSignInErrors([])
 				setSubmitting(false)
-				const signInResults = await signIn(values)
-				const signInUser = signInResults?.reponse?.data?.user
-				!signInUser && setSignInErrors([signInResults?.response?.data?.message])
+				const signInResults: any = await signIn(values)
+				const signInUser = signInResults?.user
+				!signInUser ? setSignInErrors([signInResults?.response?.data?.message]) : navigate('/dashboard')
 			}}
 		>
 			{(formik) => (

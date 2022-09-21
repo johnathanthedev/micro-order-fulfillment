@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   # root "articles#index"
 	post 'sign-up', to: 'auth#sign_up'
 	post 'sign-in', to: 'auth#sign_in'
+	get 'user-info', to: 'auth#fetch_user_info'
 end
